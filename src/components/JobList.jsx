@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-
+import JobCard from './JobCard';
+import AllFilters from './AllFilters';
 
 const JobList = () => {
   const [allJobs, setAllJobs] = useState([]);
@@ -32,6 +33,16 @@ const JobList = () => {
 
   return (
     <div className='job-list-container'>
+      <AllFilters allJobs={allJobs} setFilteredJobs={setFilteredJobs} />
+      <div className='job-cards'>
+
+        {filteredJobs.length > 0 ? filteredJobs.map((job, index) => (
+          <JobCard key={`${job.jdUid}-${index}`} job={job} />
+        )) : allJobs.map((job, index) => (
+          <JobCard key={`${job.jdUid}-${index}`} job={job} />
+        ))}
+
+      </div>
 
     </div>
   );
