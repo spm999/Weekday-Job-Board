@@ -10,7 +10,34 @@ const AllFilters = ({ allJobs, setFilteredJobs }) => {
     role: '',
     minBasePay: ''
   });
+  useEffect(() => {
+    applyFilters();
+  }, [filters, allJobs]); // Run applyFilters whenever filters or allJobs change
 
+  const applyFilters = () => {
+    let filteredJobs = [...allJobs];
+
+    filteredJobs = filteredJobs.filter(job => {
+      const minExp = filters.minExperience ? parseInt(filters.minExperience) : 0;
+      const minBasePay = filters.minBasePay ? parseInt(filters.minBasePay.replace(/\D/g, '')) : 0;
+
+
+      // console.log("Job min base salary:", job.minJdSalary);
+      // console.log("Selected min base pay:", minBasePay);
+
+      return (!filters.role || job.jobRole.toLowerCase() === filters.role.toLowerCase()) &&
+        (minExp === 0 || job.minExp <= minExp) &&
+        (filters.remote === '' || (filters.remote === 'Remote' && job.location.toLowerCase() === 'remote') || (filters.remote === 'Onsite' && job.location.toLowerCase() !== 'remote')) &&
+        (minBasePay === 0 || (job.minJdSalary !== null && job.minJdSalary >= minBasePay))
+
+        &&
+        (!filters.location || job.location.toLowerCase() === filters.location.toLowerCase()) &&
+        (!filters.companyName || job.companyName.toLowerCase().includes(filters.companyName.toLowerCase()));
+    });
+
+    setFilteredJobs(filteredJobs);
+
+  };
  
 
   const handleChange = (e) => {
