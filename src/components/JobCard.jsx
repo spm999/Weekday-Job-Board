@@ -2,6 +2,10 @@ import React, { useState } from 'react';
 
 const JobCard = ({ job }) => {
 
+    const jobLink = (link) => {
+        window.open(link, '_blank');
+    };
+
     return (
         <div className="job-card">
             <div className='upper-container'>
@@ -22,7 +26,7 @@ const JobCard = ({ job }) => {
 
             <h3 style={{ color: "#8b8b8b", fontWeight: "600", fontSize: '14px', letterSpacing: '1px', marginBottom: '0px' }}>Minimum Experience </h3>
             <p style={{ marginTop: '3px' }}>{job.minExp !== null ? job.minExp : 0} years</p>
-            <button >&#9889; Easy Apply</button>
+            <button onClick={() => jobLink(job.jdLink)}>&#9889; Easy Apply</button>
             <button id="referral" >Unlock referral asks</button>
         </div>
     );
