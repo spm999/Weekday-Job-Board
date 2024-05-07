@@ -2,8 +2,15 @@ import React, { useState } from 'react';
 
 const JobCard = ({ job }) => {
 
+    const [showPopup, setShowPopup] = useState(false);
+
+
     const jobLink = (link) => {
         window.open(link, '_blank');
+    };
+
+    const togglePopup = () => {
+        setShowPopup(!showPopup);
     };
 
     const currencySymbols = {
@@ -38,6 +45,15 @@ const JobCard = ({ job }) => {
             <p style={{ fontSize: '14px', color: '#4D596A' }}>Estimated Salary: {currencySymbol}{job.minJdSalary !== null ? job.minJdSalary : 0} - {job.maxJdSalary} LPA</p>
             <h3 style={{ fontWeight: '600' }}>About Company:</h3>
             <h4>About us</h4>
+            {showPopup && (
+                <div className="popup">
+                    <div className="popup-content">
+                        <span className="close" onClick={togglePopup}>&times;</span>
+                        <h2>About Job:</h2>
+                        <p>{job.jobDetailsFromCompany}</p>
+                    </div>
+                </div>
+            )}
   
             <p>{job.jobDetailsFromCompany.slice(0, 400)}{job.jobDetailsFromCompany.length > 400 && '...'} <span style={{ color: "blue" }} onClick={togglePopup}>View Job</span></p>
 
