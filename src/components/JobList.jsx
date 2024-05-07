@@ -29,6 +29,20 @@ const JobList = () => {
     }
   };
 
+  const handleScroll = () => {
+    if (window.innerHeight + document.documentElement.scrollTop + 1 >= document.documentElement.scrollHeight) {
+      setPage(prevPage => prevPage + 1); // Increment page number when user scrolls to the bottom
+    }
+  };
+
+  useEffect(() => {
+    window.addEventListener('scroll', handleScroll);
+    // Cleanup function
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, [loading]);
+
   
 
   return (
@@ -43,7 +57,11 @@ const JobList = () => {
         ))}
 
       </div>
-
+      {loading && (
+        <div className="loader-container">
+          <div className="loader"></div>
+        </div>
+      )}
     </div>
   );
 };
