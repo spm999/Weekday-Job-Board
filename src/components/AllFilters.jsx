@@ -22,12 +22,18 @@ const AllFilters = ({ allJobs, setFilteredJobs }) => {
             const minExp = filters.minExperience ? parseInt(filters.minExperience) : 0;
             const minBasePay = filters.minBasePay ? parseInt(filters.minBasePay.replace(/\D/g, '')) : 0;
 
+            console.log(job.minExp)
+
 
             // console.log("Job min base salary:", job.minJdSalary);
             // console.log("Selected min base pay:", minBasePay);
 
+
+                    // Check if Job.minExp is null, and if so, consider it as 0
+        const jobMinExp = job.minExp !== null ? job.minExp : 0;
+
             return (!filters.role || job.jobRole.toLowerCase() === filters.role.toLowerCase()) &&
-                (minExp === 0 || job.minExp <= minExp) &&
+            (minExp === 0 || jobMinExp <= minExp)&&
                 (filters.remote === '' || (filters.remote === 'Remote' && job.location.toLowerCase() === 'remote') || (filters.remote === 'Onsite' && job.location.toLowerCase() !== 'remote')) &&
                 (minBasePay === 0 || (job.minJdSalary !== null && job.minJdSalary >= minBasePay))
 
