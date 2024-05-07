@@ -1,0 +1,199 @@
+.jobs-container {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 25px;
+}
+
+#referral {
+  background-color: rgb(58, 58, 196);
+  color: white;
+  padding: 15px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  font-weight: 300;
+  margin: 4px 2px;
+  cursor: pointer;
+  border-radius: 5px;
+  width: 100%;
+}
+
+.job-card {
+  border: 1px solid #ccc;
+  border-radius: 20px;
+  padding: 20px;
+  margin-bottom: 40px;
+  margin-left: 70px;
+  width: 350px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+}
+
+.upper-container {
+  display: flex;
+}
+
+.main-details {
+  margin-left: 28px;
+}
+
+.main-details p {
+  margin: 0;
+}
+
+.company-logo {
+  width: 35px;
+  height: 60px;
+}
+
+h2,
+h3,
+h4,
+p {
+  margin-top: 0;
+  margin-bottom: 10px;
+}
+
+h3 {
+  margin-top: 20px;
+}
+
+span {
+  cursor: pointer;
+}
+
+button {
+  background-color: rgb(85, 239, 196);
+  border: none;
+  color: black;
+  padding: 15px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-weight: bold;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+  border-radius: 5px;
+  width: 100%;
+}
+
+.popup {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 1000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.popup-content {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+  max-width: 80%;
+  overflow: auto;
+  position: relative;
+}
+
+.close {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  cursor: pointer;
+  font-size: 20px;
+  color: #888;
+}
+
+.job-list-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.job-cards {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+}
+
+.loader-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+}
+
+.loader {
+  border: 4px solid #f3f3f3;
+  border-top: 4px solid #3498db;
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+
+select,
+input {
+  padding: 12px;
+  margin-left: 5px;
+  border-radius: 5px;
+  box-shadow: 0 0 2cqh rgba(189, 189, 189, 0.3);
+  border-color: #c5c4c4;
+  color: #888
+}
+
+.filter-container {
+  display: flex;
+  flex-wrap: wrap;
+  /* Allow items to wrap onto multiple lines */
+  padding: 35px;
+}
+
+.role,
+.minExp,
+.remote,
+.minBasePay,
+.location,
+.name {
+  flex: 1;
+  /* Make each filter item take up equal space */
+  margin-bottom: 10px;
+  /* Add some vertical spacing between filter items */
+}
+
+@media screen and (max-width: 768px) {
+  .filter-container {
+    flex-direction: column;
+    /* Change flex direction to column on smaller screens */
+    align-items: center;
+    /* Center items horizontally */
+  }
+}
+
+
+.no-jobs-message {
+  text-align: center;
+  padding: 10px;
+  background-color: #ff0000;
+  color: rgb(255, 255, 255);
+  border-radius: 10px;
+  font-size: larger;
+}
