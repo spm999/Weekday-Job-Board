@@ -6,6 +6,23 @@ const JobCard = ({ job }) => {
         window.open(link, '_blank');
     };
 
+    const currencySymbols = {
+        USD: '$', // US Dollar
+        INR: '₹', // Indian Rupee
+        EUR: '€', // Euro
+        GBP: '£', // British Pound Sterling
+        AUD: 'A$', // Australian Dollar
+        CAD: 'C$', // Canadian Dollar
+        CHF: 'CHF', // Swiss Franc
+        JPY: '¥', // Japanese Yen
+        CNY: '¥', // Chinese Yuan Renminbi
+        HKD: 'HK$', // Hong Kong Dollar
+        NZD: 'NZ$', // New Zealand Dollar
+        // Add more currency codes and symbols as needed
+    };
+
+    const currencySymbol = currencySymbols[job.salaryCurrencyCode] || ''; // Get the currency symbol
+
     return (
         <div className="job-card">
             <div className='upper-container'>
